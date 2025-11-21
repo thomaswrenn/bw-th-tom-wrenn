@@ -10,8 +10,8 @@ export type RouteTree = {
 
 dotenv.config();
 
-const port = Number(process.env.PORT) || 3000;
-const BASE_URL = `http://localhost:${port}`;
+const PORT = Number(process.env.PORT) || 3000;
+const BASE_URL = `http://localhost:${PORT}`;
 
 export function buildRouteTree(router: Router): RouteTree {
   const tree: RouteTree = {};
