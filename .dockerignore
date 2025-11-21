@@ -1,0 +1,16 @@
+node_modules
+
+# Git
+.git
+.gitignore
+
+# Build output
+/dist
+
+# Env files
+.env
+
+# IDE/editor
+.vscode
+.idea
+.DS_Store
