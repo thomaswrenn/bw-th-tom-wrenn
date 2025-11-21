@@ -7,9 +7,6 @@ node_modules
 # Build output
 /dist
 
-# Env files
-.env
-
 # IDE/editor
 .vscode
 .idea

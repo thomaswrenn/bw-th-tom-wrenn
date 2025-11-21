@@ -2,6 +2,12 @@ APP_NAME      := bw-th-tom-wrenn
 IMAGE         := $(APP_NAME)
 PROJECT_ROOT  := $(shell pwd)
 
+# Load environment variables from .env if present (for PORT, etc.)
+-include .env
+
+# Default port if PORT is not set in .env or environment
+PORT ?= 3000
+
 # Common mounts
 SRC_MOUNT     := -v $(PROJECT_ROOT)/src:/usr/src/app/src
 TESTS_MOUNT   := -v $(PROJECT_ROOT)/tests:/usr/src/app/tests
@@ -27,18 +33,18 @@ endef
 
 # --- Docker run targets ---
 
-# Dev: uses image CMD (no explicit command), binds port 3000, mounts src
+# Dev: uses image CMD (no explicit command), binds port $(PORT), mounts src
 docker-start: CONTAINER_NAME := $(APP_NAME)
 docker-start: MOUNTS         := $(SRC_MOUNT)
-docker-start: DOCKER_ARGS    := -p 3000:3000
-docker-start: CMD            := 
+docker-start: DOCKER_ARGS    := -p $(PORT):$(PORT)
+docker-start: CMD            :=
 docker-start: docker-build
 	$(docker_run)
 
-# Dev: uses image CMD (no explicit command), binds port 3000, mounts src
+# Dev: uses explicit bun watch command, binds port $(PORT), mounts src
 docker-dev: CONTAINER_NAME := $(APP_NAME)-dev
 docker-dev: MOUNTS         := $(SRC_MOUNT)
-docker-dev: DOCKER_ARGS    := -p 3000:3000
+docker-dev: DOCKER_ARGS    := -p $(PORT):$(PORT)
 docker-dev: CMD            := bun --watch src/server.ts
 docker-dev: docker-build
 	$(docker_run)
