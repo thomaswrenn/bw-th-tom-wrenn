@@ -6,9 +6,6 @@ import createApp from '../../src/app.js';
 
 dotenv.config();
 
-const PORT = Number(process.env.PORT) || 3000;
-const BASE_URL = `http://localhost:${PORT}`;
-
 const app = createApp();
 
 describe('404 not found handler with availableRoutes', () => {
