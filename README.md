@@ -2,7 +2,7 @@
 ## API Documentation
 
 **POST /ingest**
-
+```json
 {
   "id": "1234",
   "readings": [
@@ -12,21 +12,24 @@
     }
   ]
 }
+```
 
 **GET /devices/:deviceId/latest_timestamp**
-
+```json
 {
   "latest_timestamp": "2023-01-01T00:00:00Z"
 }
+```
 
 **GET /devices/:deviceId/cumulative_count**
-
+```json
 {
   "cumulative_count": 300
 }
+```
 
 **GET /devices/:deviceId**
-
+```json
 {
   "data": {
     "2023-01-01T00:00:00Z": 3,
@@ -35,6 +38,7 @@
   "latest_timestamp": "2023-01-01T00:00:01Z",
   "cumulative_count": 5
 }
+```
 
 ## Development Process
 - My most comfortable framework is Django Dynamic REST Framework in Python. 
