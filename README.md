@@ -2,6 +2,7 @@
 ## API Documentation
 
 POST /ingest
+
 {
   "id": "1234",
   "readings": [
@@ -13,16 +14,19 @@ POST /ingest
 }
 
 GET /devices/:deviceId/latest_timestamp
+
 {
   "latest_timestamp": "2023-01-01T00:00:00Z"
 }
 
 GET /devices/:deviceId/cumulative_count
+
 {
   "cumulative_count": 300
 }
 
 GET /devices/:deviceId
+
 {
   "data": {
     "2023-01-01T00:00:00Z": 3,
